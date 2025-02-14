@@ -1,16 +1,6 @@
 import logo 
 import random
 
-
-#print(your_cards)
-
-
-
-
-
-#print(your_cards) #now your cards has the user pair of nos. 
-
-
 while True: 
     
     while True:
@@ -22,17 +12,19 @@ while True:
     
     if ans.lower()=='y': 
         print(logo.logo)
-        cards=[1,2,3,4,5,6,7,8,9,10,'A','J','Q','K']
+        cards=[2,3,4,5,6,7,8,9,10,'A','J','Q','K']
         your_cards=random.choices(cards,k=2) #gives 2 random choices from cards
         computer_card=[]
-        computer_card.append(random.choice(your_cards))
+        computer_card.append(random.choice(cards))
 
         for i in range(len(computer_card)): 
             if isinstance(computer_card[i],str):
                 computer_card[i]=10
         for i in range(len(your_cards)): 
-            if isinstance(your_cards[i],str):
+            if your_cards[i]!='A':
                 your_cards[i]=10
+            else: 
+                your_cards[i]=int(input("Do you want your A to be 1/11? "))
         score=sum(your_cards)
         print(f"Your cards: {your_cards}, current score: {score}\n")
         print(f"Computer's first card: {computer_card}\n") 
@@ -46,7 +38,10 @@ while True:
             if cont.lower()=='y':
                 extra_card=random.choice(cards)
                 if isinstance(extra_card,str):
-                    extra_card=10
+                    if extra_card!='A':
+                        extra_card=10
+                    else:
+                        extra_card=int(input("Do you want your A to be 1/11? "))
                 your_cards.append(extra_card)
                 score=sum(your_cards)
                 print(f"Your cards: {your_cards}, current score: {score}\n")
