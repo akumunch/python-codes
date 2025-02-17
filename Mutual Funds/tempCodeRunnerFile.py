@@ -1,0 +1,1 @@
+'Alpha','Beta','Sharpe Ratio','Sortino','Expense ratio(%)','Exit Load Days','Exit load value(%)','Fund Size (cr)','Growth over past year|3Y|5Y(%)'

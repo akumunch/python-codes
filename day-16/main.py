@@ -1,0 +1,11 @@
+import turtle
+timmy=turtle.Turtle()
+my_screen=turtle.Screen()
+timmy.color('blue','cyan')
+my_screen.bgcolor('brown')
+timmy.forward(100)
+timmy.left(120)
+timmy.forward(100)
+timmy.left(120)
+timmy.forward(100)
+my_screen.exitonclick()
