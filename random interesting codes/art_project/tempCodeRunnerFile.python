@@ -1,0 +1,44 @@
+from turtle import Turtle, Screen
+import random
+
+# Initialize screen
+screen = Screen()
+screen.colormode(255)
+screen.screensize(500, 500)
+
+# Initialize turtle
+tim = Turtle()
+tim.speed(10)
+tim.penup()
+tim.hideturtle()
+
+# Define colors
+rgb_colors = [
+    (133, 164, 202), (225, 150, 101), (30, 43, 64), (201, 136, 148), 
+    (163, 59, 49), (236, 212, 88), (44, 101, 147), (136, 181, 161), 
+    (148, 64, 72), (51, 41, 45), (161, 32, 29), (60, 115, 99), 
+    (59, 48, 45), (170, 29, 32), (215, 83, 73), (236, 167, 157), 
+    (230, 163, 168), (36, 61, 55), (15, 96, 71), (33, 60, 106), 
+    (172, 188, 219), (194, 99, 108), (106, 126, 158), (18, 83, 105), 
+    (175, 200, 188), (35, 150, 209)
+]
+
+# Function to draw a dot
+def dots():
+    color_ = random.choice(rgb_colors)
+    tim.dot(20, color_)  # Draw filled circle dot
+    tim.forward(50)  # Move forward for spacing
+
+# Move turtle to starting position
+tim.goto(-200, 200)
+
+# Loop to create 10x10 dot matrix
+for i in range(10):  # Rows
+    for j in range(10):  # Columns
+        dots()  # Draw a dot
+    # Move turtle to new line
+    tim.penup()
+    tim.goto(200, 200 + (i) * 50)  # Reset x, move y down
+    tim.pendown()
+
+screen.exitonclick()
