@@ -1,1 +1,7 @@
-not my code :) ! 
+problem statements: 
+
+1) Automating doors using AI for unique pattern analysis to differentiate between stranger/owner. Includes safety protocols like calling ambulance on command, police in case of danger, fire service in case of excessive temperature. 
+
+2) Intelligent shoe rack- arranges lots of shoes/slippers/floaters by segregating them, placing them in a neat and sensible order, with the regularly used ones on the extreme bottom. 
+
+3) 

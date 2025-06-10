@@ -1,0 +1,16 @@
+from turtle import Turtle,Screen
+import random
+
+tim=Turtle(shape="turtle")
+screen= Screen()
+screen.setup(width=500, height=400)
+colors = ["red", "orange", "yellow", "green", "blue", "indigo", "purple"]
+colors_5= random.choices(colors, k=5)
+names = ["tim","joe", "bob", "sam", "max"]
+tim.goto(x)
+for i in range(5):
+    names[i]=Turtle(shape="turtle")
+    names[i].goto(x=-250,y=((-1)^i)*20*i)
+#now, names is a list of turtle objects with different colors
+
+screen.exitonclick()

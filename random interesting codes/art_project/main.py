@@ -91,4 +91,6 @@ for i in range(10):
     tim.forward(500)
     tim.setheading(0)
     tim.pendown()
+
+
 screen.exitonclick()
