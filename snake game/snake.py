@@ -1,7 +1,7 @@
 from turtle import Turtle
 
 POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
-MOVE_DISTANCE = 19
+MOVE_DISTANCE = 15
 
 UP = 90
 DOWN = 270
