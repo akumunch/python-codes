@@ -1,0 +1,1478 @@
+import csv
+
+data="""
+CFOC101M Advanced Green Manufacturing Systems 1 3
+CFOC102M Introduction to Cognitive Psychology 1 3
+CFOC103M Introduction to Political Theory 1 3
+CFOC104M Six Sigma 1 3
+CFOC105M Emotional Intelligence 1 2
+CFOC106M Manufacturing Strategy 1 2
+CFOC107M Supply Chain Analytics 1 2
+CFOC108M Systems Engineering: Theory and Practice 1 2
+CFOC109M Design Thinking - A Primer 1 1
+CFOC110M MCDM Techniques Using R and MATLAB 1 1
+CFOC111M Perspectives on Neurolinguistic 1 1
+CFOC112M Sociology of Science 1 1
+CFOC113M Contemporary Themes in Indiaâ€™s Economic Development and Economic Survey 1 3
+CFOC114M Problem Solving through Programming in C 1 3
+CFOC115M Design and Analysis of Algorithms 1 2
+CFOC116M Computer Vision 1 3
+CFOC117M Spatial Informatics 1 2
+CFOC118M Practical Machine Learning with Tensorflow 1 2
+CFOC119M Training of Trainers 1 3
+CFOC120M Knowledge Management 1 2
+CFOC121M Leadership 1 1
+CFOC122M Educational Leadership 1 2
+CFOC122M Educational Leadership 2 3
+CFOC123M Cost Accounting 1 1
+CFOC124M Practitioners Course In Descriptive, Predictive and Prescriptive Analytics 1 2
+CFOC125M Decision-Making Under Uncertainty 1 1
+CFOC126M Data Analysis and Decision Making - III 1 3
+CFOC127M Business Analytics and Data Mining Modeling Using R Part II 1 1
+CFOC128M Business Analytics and Text Mining Modeling Using Python 1 2
+CFOC129M Economics of Health and Health Care 1 2
+CFOC130M Human Resource Development 1 3
+CFOC131M Performance and Reward Management 1 3
+CFOC132M Corporate Social Responsibility 1 2
+CFOC133M E-Business 1 3
+CFOC134M Innovation, Business Models and Entrepreneurship 1 2
+CFOC135M The Ethical Corporation 1 2
+CFOC136M Toyota Production System 1 2
+CFOC137M Intellectual Property Rights and Competition Law 1 2
+CFOC138M Patent Search for Engineers and Lawyers 1 2
+CFOC139M Role of Craft and Technology in Interior - Architecture 1 2
+CFOC140M Glass In Buildings : Design And Applications 1 3
+CFOC141M Visual Perception and Art: A Survey Across the Cultures 1 1
+CFOC142M Mapping Signal Processing Algorithms to Architectures 1 3
+CFOC143M Introduction to Computer Vision 1 3
+CFOC144M Op-Amp Practical Applications: Design, Simulation and Implementation 1 3
+CFOC145M Fabrication Techniques for MEMs - based sensors: clinical Perspective 1 3
+CFOC146M Linear System Theory 1 3
+CFOC147M
+Advanced Linear Continuous Control Systems: Applications with MATLAB
+Programming and Simulink 1 2
+CFOC148M Introduction to Wireless and Cellular Communications 1 3
+CFOC149M Digital Switching - I 1 2
+CFOC150M Microelectronics: Devices To Circuits 1 3
+CFOC151M Digital Image Processing 1 3
+CFOC152M Pattern Recognition and Application 1 3
+CFOC153M Microwave Theory and Techniques 1 3
+CFOC154M Principles and Techniques of Modern Radar Systems 1 3
+CFOC155M Computational Electromagnetics 1 3
+CFOC156M Microwave Engineering 1 3
+CFOC157M Introduction to parallel Programming in Open MP 1 1
+CFOC157M Introduction to parallel Programming in Open MP 2 2
+CFOC158M Reinforcement Learning 1 3
+CFOC159M Applied Natural Language Processing 1 3
+CFOC160M Python for Data Science 1 1
+CFOC161M Data Science for Engineers 1 2
+CFOC162M Scalable Data Science 1 2
+CFOC163M Advanced Computer Architecture 1 2
+CFOC164M Software Project Management 1 3
+CFOC165M Software testing 1 3
+CFOC166M Hardware Modeling using Verilog 1 2
+CFOC167M Synthesis of Digital Systems 1 3
+CFOC168M Switching Circuits and Logic Design 1 3
+CFOC169M Demystifying networking 1 1
+CFOC170M Modern Algebra 1 2
+CFOC171M Introduction to Haskell Programming 1 2
+CFOC171M Introduction to Haskell Programming 2 3
+CFOC172M Flow through Porous Media 1 3
+CFOC173M Bioenergy 1 2
+CFOC174M Introduction to Biostatistics 1 2
+CFOC175M Nanotechnology in Agriculture 1 2
+CFOC176M Computer Aided Drug Design 1 2
+CFOC177M Drug Delivery: Principles and Engineering 1 3
+CFOC178M Functional Genomics 1 1
+CFOC179M Introduction to Proteogenomics 1 3
+CFOC180M Introduction to Mechanobiology 1 2
+CFOC181M WildLife Conservation 1 2
+CFOC182M Organic Chemistry in Biology and Drug Development 1 3
+CFOC183M Bioinorganic Chemistry 1 1
+CFOC184M Spectroscopic Techniques for Pharmaceutical and Biopharmaceutical Industries 1 3
+CFOC185M Biophysical chemistry 1 3
+CFOC186M Deep Learning 1 3
+CFOC187M Blockchain Architecture Design and use Cases 1 3
+CFOC188M Ethical Hacking 1 3
+CFOC189M Organic Farming for Sustainable Agricultural Production 1 2
+CFOC190M Positive Psychology 1 2
+CFOC191M Forests and their Management 1 3
+CFOC192M Forest Biometry 1 2
+CFOC193M Bioengineering: An Interface with Biology and Medicine 1 2
+CFOC194M Human Molecular Genetics 1 1
+CFOC195M Bioenergetics of Life Processes 1 1
+CFOC196M Computational Systems Biology 1 3
+CFOC197M Bio-Informatics: Algorithms and Applications 1 3
+CFOC198M Biostatistics and Design of Experiments 1 2
+CFOC199M Medical Biomaterials 1 2
+CFOC200M Demystifying the Brain 1 1
+CFOC201M Principles and Applications of NMR Spectroscopy 1 2
+CFOC202M Cell Culture Technologies 1 2
+CFOC203M Natural Hazards 1 2
+CFOC204M Modern Construction Materials 1 3
+CFOC205M Energy Efficiency, Acoustics and Daylighting in Building 1 3
+CFOC206M Fire Protection, Services and Maintenance Management of Building 1 3
+CFOC207M Electronic Waste Management - Issues And Challenges 1 1
+CFOC208M Higher Surveying 1 3
+CFOC209M Environmental Remediation of Contaminated Sites 1 3
+CFOC210M Soil Structure Interaction 1 3
+CFOC211M Introduction to Accounting and Finance for Civil Engineers 1 2
+CFOC212M Scheduling Techniques in Projects 1 1
+CFOC213M GPS Surveying 1 1
+CFOC214M Sustainable Materials and Green Buildings 1 3
+CFOC215M Geomorphic Processes: Landforms and Landscapes 1 2
+CFOC216M Introduction To Process Modeling in the Membrane Separation Process 1 1
+CFOC217M Computational Geometry 1 3
+CFOC218M Compiler Design 1 3
+CFOC219M Embedded System Design with ARM 1 2
+CFOC220M VLSI Physical Design 1 3
+CFOC221M Cloud computing 1 2
+CFOC221M Cloud Computing 2 3
+CFOC222M Artificial Intelligence : Knowledge Representation And Reasoning 1 3
+CFOC223M Privacy and Security in Online Social Media 1 2
+CFOC224M Information Security - 5 - Secure Systems Engineering 1 2
+CFOC225M Model Checking 1 3
+CFOC226M Randomized Algorithms 1 3
+CFOC227M GPU Architectures and Programming 1 3
+CFOC228M Multi-Core Computer Architecture - Storage and Interconnects 1 2
+CFOC229M Data Analytics with Python 1 3
+CFOC230M Arithmetic Circuit Complexity 1 3
+CFOC231M Google Cloud Computing Foundation Course 1 2
+CFOC232M Consumer Behaviour 1 2
+CFOC233M Enhancing Soft Skills and Personality 1 2
+CFOC234M Introduction to Airplane Performance 1 2
+CFOC235M Rocket Propulsion 1 3
+CFOC236M Aircraft Maintenance 1 1
+CFOC237M Sustainable Architecture 1 3
+CFOC238M Introduction to History of Architecture in India 1 1
+CFOC239M Structure, Form, and Architecture : The Synergy 1 2
+CFOC240M Interactomics : Basics and Applications 1 3
+CFOC241M Introduction to Professional Scientific Communication 1 1
+CFOC242M Material and Energy Balances 1 3
+CFOC243M Thermodynamics for Biological Systems: Classical and Statistical Aspect 1 3
+CFOC244M
+Optical Spectroscopy and Microscopy : Fundamentals of Optical Measurements and
+Instrumentation 1 3
+CFOC245M Fundamentals of Semiconductor Devices 1 3
+CFOC246M Characterization of Construction Materials 1 3
+CFOC247M Introduction to Civil Engineering Profession 1 2
+CFOC248M Environmental Geomechanics 1 3
+CFOC249M Mechanical Characterization of Bituminous Materials 1 3
+CFOC250M Geosynthetics and Reinforced Soil Structures 1 3
+CFOC251M Geotechnical Engineering II Foundation Engineering 1 3
+CFOC252M Landscape Architecture and Site Planning - Basic Fundamentals 1 2
+CFOC253M Plastic Waste Management 1 2
+CFOC254M Advanced Topics in the Science and Technology of Concrete 1 1
+CFOC255M Applied Environmental Microbiology 1 3
+CFOC256M Digital Land Surveying And Mapping (DLS&M) 1 2
+CFOC257M Earthquake Geology: A tool for Seismic Hazard Assessment 1 3
+CFOC258M Introduction to Geographic Information Systems 1 1
+CFOC259M Structural Dynamics 1 3
+CFOC259M Structural Dynamics 2 4
+CFOC260M Water Supply Engineering 1 3
+CFOC261M Geo Spatial Analysis in Urban Planning 1 1
+CFOC262M Geotechnical Engineering - 1 1 3
+CFOC263M Maintenance and Repair of Concrete Structures 1 3
+CFOC264M Thermodynamics 1 3
+CFOC265M Geomorphology 1 3
+CFOC266M Remote Sensing Essentials 1 3
+CFOC267M Hydraulic Engineering 1 3
+CFOC268M Environmental Quality Monitoring and Analysis 1 3
+CFOC269M Electrochemical Technology in Pollution Control 1 2
+CFOC270M Advanced Thermodynamics 1 3
+CFOC271M Membrane Technology 1 3
+CFOC272M Computational Fluid Dynamics 1 3
+CFOC273M Transport phenomena 1 3
+CFOC274M Optimization in Chemical Engineering 1 3
+CFOC275M Soft Nano Technology 1 2
+CFOC276M Transport processes I - Heat and Mass Transfer 1 3
+CFOC277M Process Control - Design, Analysis and Assessment 1 3
+CFOC278M Heat Transfer 1 3
+CFOC279M Chemical Reaction Engineering II 1 3
+CFOC280M Multiphase Flows 1 2
+CFOC281M Mass Transfer Operations - I 1 3
+CFOC282M Waste to Energy Conversion 1 2
+CFOC283M Equipment Design : Mechanical Aspects 1 1
+CFOC284M An Introduction to Cardiovascular Fluid Mechanics 1 1
+CFOC285M Computer Aided Applied Single Objective Optimization 1 2
+CFOC285M Computer Aided Applied Single Objective Optimization 2 3
+CFOC286M Basic Principles and Calculations in Chemical Engineering 1 3
+CFOC287M Introduction to Blockchain Technology and Applications 1 2
+CFOC288M Foundations of Cryptography 1 3
+CFOC289M Introduction to Database Systems 1 3
+CFOC290M Operating System 1 3
+CFOC291M Programming in C++ 1 2
+CFOC292M Programming in Java 1 3
+CFOC293M Data Base Management System 1 2
+CFOC294M Introduction to Algorithms and Analysis 1 3
+CFOC295M Data Mining 1 2
+CFOC296M Embedded Systems Design 1 3
+CFOC297M Real Time Operating System 1 1
+CFOC298M Introduction to Soft Computing 1 2
+CFOC299M Cryptography and Network Security 1 3
+CFOC300M Introduction to Internet of Things 1 3
+CFOC301M Computer Networks and Internet Protocol 1 3
+CFOC302M Introduction to Industry 4.0 and Industrial Internet of Things 1 3
+CFOC303M Computer Architecture 1 3
+CFOC304M Programming, Data Structures And Algorithms Using Python 1 2
+CFOC305M Introduction to Machine Learning 1 3
+CFOC306M Social Networks 1 3
+CFOC307M Foundations to Computer Systems Design 1 3
+CFOC308M The Joy of Computing using Python 1 3
+CFOC309M Discrete Mathematics 1 3
+CFOC310M An Introduction to Artificial Intelligence 1 3
+CFOC311M User-centric Computing for Human-Computer Interaction 1 3
+CFOC312M Cloud Computing and Distributed Systems 1 2
+CFOC313M Machine Learning 1 2
+CFOC314M Modern Application Development 1 3
+CFOC315M An Introduction To Programming Through C++ 1 3
+CFOC316M Design and Pedagogy of the Introductory Programming Course 1 1
+CFOC317M Quantitative Methods in Chemistry 1 3
+CFOC318M Basics in Inorganic Chemistry 1 1
+CFOC319M Ultrafast Laser Spectroscopy 1 3
+CFOC320M Transition Metal Organometallics in Catalysis and Biology 1 3
+CFOC321M Essentials of Biomolecules : Nucleic Acids and Peptides 1 3
+CFOC322M Fundamentals of Spectroscopy 1 3
+CFOC323M Advanced Chemical Thermodynamics and Kinetics 1 3
+CFOC324M Biochemistry 1 3
+CFOC325M Organometallic Chemistry 1 1
+CFOC326M Chemical Applications of Symmetry and Group Theory 1 2
+CFOC327M Basic Thermodynamics : Classical and Statistical Approaches 1 3
+CFOC328M Medicinal Chemistry 1 3
+CFOC329M Design, Technology and Innovation 1 2
+CFOC330M Geographic Information System 1 3
+CFOC331M Product Design and Innovation 1 1
+CFOC332M Fundamentals of Automotive Systems 1 3
+CFOC333M Electronics Equipment Integration and Prototype Building 1 2
+CFOC334M High Power Multilevel Converters-Analysis, Design and Operational Issues 1 3
+CFOC335M Fuzzy Sets, Logic and Systems and Applications 1 3
+CFOC336M Transmission Lines and Electromagnetic Waves 1 3
+CFOC337M Digital IC Design 1 3
+CFOC338M Signals and Systems 1 3
+CFOC339M Power Management Integrated Circuits 1 3
+CFOC340M DC Power Transmission Systems 1 3
+CFOC341M Microprocessors and Interfacing 1 3
+CFOC342M Design and Simulation of Power Conversion using Open Source Tools 1 1
+CFOC343M Integrated Circuits, MOSFETs, OP-Amps and their Applications 1 3
+CFOC344M Electronic Systems for Cancer Diagnosis 1 3
+CFOC345M Principles of Signals and Systems 1 3
+CFOC346M Principles of Communication Systems - I 1 3
+CFOC347M Principles of Digital Communication 1 3
+CFOC348M Electric Vehicles - Part 1 1 1
+CFOC349M Nonlinear Adaptive Control 1 1
+CFOC349M Nonlinear Adaptive Control 2 3
+CFOC350M Antennas 1 3
+CFOC351M Multirate DSP 1 3
+CFOC352M Control Engineering 1 3
+CFOC353M Introduction to Photonics 1 3
+CFOC354M Microwave Integrated Circuits 1 2
+CFOC355M Analog IC Design 1 3
+CFOC356M Analog Circuits 1 3
+CFOC357M Advance Power Electronics and Control 1 2
+CFOC358M CMOS Digital VLSI Design 1 2
+CFOC359M Analog Circuits and Systems through SPICE Simulation 1 3
+CFOC360M Discrete Time Signal Processing 1 2
+CFOC361M Digital Electronic Circuits 1 3
+CFOC362M Fundamentals of MIMO Wireless Communication 1 2
+CFOC363M Spread Spectrum Communications and Jamming 1 3
+CFOC364M
+Basic Building Blocks of Microwave Engineering & Design Principles of RF and
+Microwave Filters and Amplifiers 1 2
+CFOC365M Evolution of Air Interface towards 5G 1 2
+CFOC366M Architectural Design of Digital Integrated Circuits 1 3
+CFOC367M Electrical Machines - II 1 3
+CFOC368M Medical Image Analysis 1 1
+CFOC369M Biomedical Signal Processing 1 3
+CFOC370M Microprocessors And Microcontrollers 1 3
+CFOC371M Recent Advances in Transmission Insulator 1 1
+CFOC372M VLSI Signal Processing 1 2
+CFOC373M Analog Electronic Circuits 1 3
+CFOC374M Network Analysis 1 3
+CFOC375M Optical Engineering 1 3
+CFOC376M Mathematical Methods and Techniques in Signal Processing 1 3
+CFOC377M A brief introduction of Micro - Sensors 1 1
+CFOC378M Statistical Signal Processing 1 3
+CFOC379M Nonlinear System Analysis 1 3
+CFOC380M Ethics in Engineering Practice 1 2
+CFOC381M Introduction to Research 1 2
+CFOC382M Matlab Programming for Numerical Computation 1 2
+CFOC383M Roadmap for Patent Creation 1 2
+CFOC384M Entrepreneurship Essentials 1 3
+CFOC385M Fuzzy Logic and Neural Networks 1 2
+CFOC386M Microeconomics : Theory & Applications 1 3
+CFOC387M Introduction to Environmental Economics 1 3
+CFOC388M Energy Resources, Economics and Environment 1 3
+CFOC389M Literary Criticism (From Plato to Leavis) 1 3
+CFOC390M Twentieth Century Fiction 1 3
+CFOC391M Effective Writing 1 1
+CFOC392M Strategic Trade and Protectionism - Theories and Empirics 1 2
+CFOC393M Introduction to Cultural Studies 1 3
+CFOC394M Introduction to Basic Spoken Sanskrit 1 1
+CFOC395M Speaking Effectively 1 2
+CFOC396M Soft Skill Development 1 2
+CFOC397M Intellectual Property 1 3
+CFOC398M English Language for Competitive Exams 1 3
+CFOC399M English Literature for competitive Exams 1 2
+CFOC400M Language and Mind 1 2
+CFOC401M The Nineteenth - Century English Novel 1 3
+CFOC402M Introduction to World Literature 1 3
+CFOC403M Patent Drafting for Beginners 1 1
+CFOC404M Patent Law for Engineers and Scientists 1 3
+CFOC405M Economic Growth & Development 1 2
+CFOC406M Human Behaviour 1 2
+CFOC407M Introduction to Modern Indian Political Thought 1 3
+CFOC408M English Literature of the Romantic Period, 1798 - 1832 1 2
+CFOC409M Literature, Culture and Media 1 3
+CFOC410M Introduction to Brain & Behaviour 1 2
+CFOC411M Modern Indian Writing in Translation 1 3
+CFOC412M Introduction to Political Ideologies : Contexts, Ideas and Practices 1 3
+CFOC413M Indian Business History 1 2
+CFOC414M German - II 1 3
+CFOC415M German - I 1 3
+CFOC416M Feminism : Concepts and Theories 1 3
+CFOC417M An Introduction to Smooth Manifolds 1 3
+CFOC418M Measure Theory 1 3
+CFOC419M Basic Real Analysis 1 3
+CFOC420M Probabilistic Methods in PDE 1 3
+CFOC421M Graph Theory 1 2
+CFOC422M Transform Calculus and its applications in Differential Equations 1 3
+CFOC423M Integral and Vector Calculus 1 3
+CFOC424M Basic Linear Algebra 1 2
+CFOC425M Introduction to Rings And Fields 1 2
+CFOC426M Numerical Methods : Finite Difference Approach 1 1
+CFOC427M Numerical Linear Algebra 1 3
+CFOC428M Ordinary and Partial Differential Equations and Applications 1 3
+CFOC429M Advanced Engineering Mathematics 1 3
+CFOC430M Mathematical Methods and its Applications 1 3
+CFOC431M Multivariable Calculus 1 2
+CFOC432M Chaotic Dynamical System 1 3
+CFOC433M Engineering Mathematics II 1 3
+CFOC434M Advanced Probability Theory 1 3
+CFOC435M Statistical Inference 1 2
+CFOC436M Introduction to Algebraic Geometry and Commutative Algebra 1 3
+CFOC437M Linear Algebra 1 3
+CFOC438M Introduction to Probability and Statistics 1 1
+CFOC439M Descriptive Statistics with R Software 1 2
+CFOC440M Engineering Mechanics - Statics and Dynamics 1 2
+CFOC441M Experimental Stress Analysis 1 3
+CFOC442M Robotics and Control : Theory and Practice 1 2
+CFOC443M Computational Fluid Dynamics for Incompressible Flows 1 3
+CFOC444M Experimental Methods in Fluid Mechanics 1 3
+CFOC445M Foundations of Computational Materials Modelling 1 3
+CFOC446M Acoustic Materials and Metamaterials 1 2
+CFOC447M Power Plant Engineering 1 2
+CFOC448M Applied Ergonomics 1 3
+CFOC449M Product Design and Manufacturing 1 3
+CFOC450M Manufacturing Process Technology I & II 1 3
+CFOC451M Introduction To Mechanical Micro Machining 1 3
+CFOC452M
+Non Traditional Abrasive Machining Processes Ultrasonic, Abrasive Jet and Abrasive
+Water Jet Machining 1 1
+CFOC453M Gear And Gear Unit Design : Theory And Practice 1 2
+CFOC454M Conduction and Convection Heat Transfer 1 3
+CFOC455M Laws of Thermodynamics 1 1
+CFOC456M Kinematics of Mechanisms and Machines 1 2
+CFOC457M Introduction To Fluid Mechanics 1 3
+CFOC458M Fundamental of Welding Science and Technology 1 2
+CFOC459M Introduction to Abrasive Machining and Finishing Processes 1 2
+CFOC460M Automatic Control 1 2
+CFOC461M Inspection and Quality Control in Manufacturing 1 1
+CFOC462M Diffusion in Multicomponent Solids 1 3
+CFOC463M Processing of Polymers and Polymer Composites 1 2
+CFOC464M Operations Management 1 3
+CFOC465M Convective Heat Transfer 1 1
+CFOC466M Two phase flow and heat transfer 1 1
+CFOC467M Steam and Gas Power Systems 1 2
+CFOC468M Principles of Casting Technology 1 2
+CFOC469M Financial Mathematics 1 3
+CFOC470M Modelling and Simulation of Dynamic Systems 1 2
+CFOC471M Fundamentals of combustion for propulsion 1 2
+CFOC472M Industrial Automation And Control 1 3
+CFOC473M Fundamentals of Nuclear Power Generation 1 3
+CFOC474M Mechanics of Machining 1 2
+CFOC475M IC Engines and Gas Turbines 1 3
+CFOC476M Principles of Industrial Engineering 1 3
+CFOC477M Computer Integrated Manufacturing 1 3
+CFOC478M Machining Science 1 1
+CFOC479M Introduction to Stochastic Processes 1 3
+CFOC480M Introduction to System Dynamics Modeling 1 2
+CFOC481M Management of New Products and Services 1 1
+CFOC482M Integrated Marketing Management 1 2
+CFOC483M Simulation of Business Systems: An Applied Approach 1 2
+CFOC484M Production and Operation Management 1 3
+CFOC485M Services Marketing: Integrating People, Technology, Strategy 1 2
+CFOC486M Managerial Skills for Interpersonal Dynamics 1 3
+CFOC487M Financial Institutions and Markets 1 3
+CFOC488M Business Analytics For Management Decision 1 3
+CFOC489M Services Marketing : A Practical Approach 1 1
+CFOC490M Sales and Distribution Management 1 2
+CFOC491M Principles of Human Resource Management 1 2
+CFOC492M Managing change in organizations 1 2
+CFOC493M Management of Inventory Systems 1 3
+CFOC494M Quality Design And Control 1 3
+CFOC495M Foundation Course in Managerial Economics 1 2
+CFOC496M Engineering Econometrics 1 3
+CFOC497M Financial Statement Analysis and Reporting 1 3
+CFOC498M Business Statistics 1 3
+CFOC499M Global Marketing Management 1 2
+CFOC500M Marketing Research and Analysis - II 1 3
+CFOC501M Infrastructure Planning and Managements 1 3
+CFOC502M Modelling and Analytics for Supply Chain Management 1 3
+CFOC503M Marketing Analytics 1 3
+CFOC504M Financial Management For Managers 1 3
+CFOC505M Management of Commercial Banking 1 3
+CFOC506M Behavioral and Personal Finance 1 2
+CFOC507M Total Quality Management - 1 1 2
+CFOC508M Entrepreneurship 1 3
+CFOC509M Modeling of Tundish Steelmaking Process in Continuous Casting 1 2
+CFOC510M Fundamentals of Electronic Materials and Devices 1 2
+CFOC511M Introduction to Materials Science and Engineering 1 3
+CFOC512M Corrosion - Part I 1 2
+CFOC513M Solar Photovoltaics: Principles, Technologies and Materials 1 2
+CFOC514M Welding Processes 1 3
+CFOC515M Theory and Practice of Non Destructive Testing 1 2
+CFOC516M Steel Quality: Role of Secondary Refining and Continuous Casting 1 3
+CFOC517M Materials Science and Engineering 1 2
+CFOC518M Surface Engineering of Nanomaterials 1 2
+CFOC519M Dealing with Materials Data: Collection, Analysis and Interpretation 1 3
+CFOC520M Friction and Wear of Materials: Principle and Case Studies 1 2
+CFOC521M Material Characterization 1 3
+CFOC522M Offshore Structures Under Special Environmental Loads Including Fire Resistance 1 3
+CFOC523M Physics of Biological Systems 1 3
+CFOC524M Group Theory methods in Physics 1 3
+CFOC525M Experimental Physics - II 1 3
+CFOC526M Quantum Mechanics I 1 3
+CFOC527M A Brief Course on Superconductivity 1 1
+CFOC528M Fiber Optics 1 2
+CFOC529M Electromagnetism 1 3
+CFOC530M Experimental Physics III 1 3
+CFOC531M Electronic Theory of Solids 1 3
+CFOC532M Introduction to Atmospheric and Space Sciences 1 3
+CFOC533M Optical Sensors 1 1
+CFOC534M Evaluation of Textiles Materials 1 3
+CFOC535M Advanced Textile Printing Technology 1 2
+CFOC536M Textured Yarn Technology 1 3
+CFOC537M Theory of Yarn Structure 1 3
+CFOC537M Theory of Yarn Structure 2 2
+CFOC538M Testing of Functional and Technical Textiles 1 2
+CFOC539M Applied Optimization for Wireless, Machine Learning, Big Data 1 3
+CFOC540M Deep Learning for Computer Vision 1 3
+CFOC541M Deep Learning for Visual Computing 1 3
+CFOC542M Principles of Compiler Design 1 3
+CFOC543M International Business 1 3
+CFOC544M Learning Analytics Tools 1 3
+CFOC545M Advanced IoT Applications 1 2
+CFOC546M Algorithms for Big Data 1 2
+CFOC547M Decision Making using Financial Accounting 1 2
+CFOC548M Introduction on Intellectual Property to Engineers and Technologists 1 2
+CFOC549M Introduction to Quantum Computing: Quantum Algorithms and Qiskit 1 1
+CFOC550M Numerical Analysis 1 4
+CFOC550M Numerical Analysis 2 3
+CFOC551M Quantum Technology and Quantum Phenomena in Macroscopic Systems 1 3
+CFOC552M Electrochemical Impedance Spectroscopy 1 3
+CFOC553M Carbon Materials and Manufacturing 1 3
+CFOC554M Electronic Packaging and Manufacturing 1 2
+CFOC555M Finite Element Method 1 3
+CFOC556M Physics of Materials 1 3
+CFOC557M X-ray Crystallography and Diffraction 1 3
+CFOC558M Solar Photovoltaics Fundamentals, Technology and Applications 1 2
+CFOC559M Design of Photovoltaic Systems 1 3
+CFOC560M Fundamentals of Micro and Nanofabrication 1 3
+CFOC561M Biomedical Nanotechnology 1 1
+CFOC562M Design and Analysis of VLSI Subsystems 1 3
+CFOC563M Physics of Nanoscale Devices 1 3
+CFOC564M Photonic Integrated Circuit 1 3
+CFOC565M Technologies for Clean and Renewable Energy Production 1 2
+CFOC566M Elements of Solar Energy Conversion 1 3
+CFOC567M Physics of Renewable Energy Systems 1 3
+CFOC568M Structural Analysis of Nanomaterials 1 1
+CFOC569M Computational Approach to Materials Science and Engineering 1 2
+CFOC570M Public Speaking 1 3
+CFOC571M Introduction To CFD 1 3
+CFOC572M Dairy And Food Process And Products Technology 1 3
+CFOC573M Fundamentals Of Food Process Engineering 1 3
+CFOC574M Micro irrigation Engineering 1 3
+CFOC575M Wildlife Ecology 1 3
+CFOC576M Integrated Waste Management For A Smart City 1 3
+CFOC577M Introduction To Multimodal Urban Transportation Systems (MUTS) 1 3
+CFOC578M Wastewater Treatment And Recycling 1 3
+CFOC579M Structural Geology 1 3
+CFOC580M Real-Time Systems 1 3
+CFOC581M Algorithmic Game Theory 1 3
+CFOC582M Computational Number Theory and Algebra 1 3
+CFOC583M Power System Protection 1 3
+CFOC584M Accreditation And Outcome Based Learning 1 2
+CFOC585M Great Experiments In Psychology 1 1
+CFOC586M Spoken Sanskrit: Basic and Intermediate Levels 1 3
+CFOC587M Economics of Banking and Finance Markets 1 3
+CFOC588M Concepts Of Thermodynamics 1 3
+CFOC589M Engineering Drawing And Computer Graphics 1 3
+CFOC590M Management Information System 1 3
+CFOC591M Principles Of Management 1 3
+CFOC592M Stress Management 1 1
+CFOC593M Corporate Finance 1 3
+CFOC593M Corporate Finance 2 2
+CFOC594M Customer Relationship Management 1 2
+CFOC595M Urbanization and Environment 1 2
+CFOC596M Digital Speech Processing 1 2
+CFOC597M Globalization And Culture 1 2
+CFOC598M Elements of Visual Representation 1 2
+CFOC599M Leadership and Team Effectiveness 1 3
+CFOC600M Data Analysis for Biologists 1 2
+CFOC601M Advance Course in Social Psychology 1 3
+CFOC602M Product and Brand Management 1 3
+CFOC603M Quantitative Investment Management 1 2
+CFOC604M Entrepreneurship and IP Strategy 1 2
+CFOC605M Sensor Technologies: Physics, Fabrication, and Circuits 1 2
+CFOC606M Ecology and Environment 1 2
+CFOC607M Analog VLSI Design 1 3
+CFOC608M The Science of Happiness and Wellbeing 1 2
+CFOC609M Introduction to Basic Spoken Sanskrit and Intermediate Level of Spoken Sanskrit 1 3
+CFOC610M Advanced Algorithmic Trading and Portfolio Management 1 2
+CFOC611M Advanced Quantum Mechanics with Applications 1 2
+CFOC612M Business Fundamentals for Entrepreneurs 1 1
+CFOC612M Business Fundamentals for Entrepreneurs 2 3
+CFOC613M C-Based VLSI Design 1 3
+CFOC614M The Popular Gothic Novel 1 3
+CFOC615M Introduction To Biomimicry 1 2
+CFOC616M Applied Linguistics 1 3
+CFOC617M Gender and Literature 1 2
+CFOC618M Developing Soft Skills and Personality 1 2
+CFOC619M Corporate Finance_2 1 2
+CFOC620M Architectural Acoustics 1 2
+CFOC621M An Introduction to Indian Literary Theory 1 2
+CFOC622M Indian Art: Materials, Techniques And Artistic Practices 1 3
+CFOC623M Space Flight Mechanics 1 3
+CFOC624M Industrial Safety Engineering 1 3
+CFOC625M Advanced Thermodynamics and Combustion 1 3
+CFOC626M Postmodernism in Literature 1 2
+CFOC627M Natural Language Processing 1 3
+CFOC628M Appreciating Carnatic Music 1 2
+CFOC629M Body language: Key to Professional Success 1 1
+CFOC630M Business To Business Marketing 1 3
+CFOC631M Conservation Geography 1 3
+CFOC632M Enclosure Design Of Electronics Equipment 1 3
+CFOC633M Environment and Development 1 3
+CFOC634M Introduction to Aerospace Engineering 1 3
+CFOC635M Operations and Supply Chain Management 1 3
+CFOC636M Programming in Modern C++ 1 3
+CFOC637M Psychology Of Learning 1 3
+CFOC638M Urban utilities Planning : Water Supply, Sanitation and Drainage 1 3
+CFOC639M Research Methodology 1 2
+CFOC640M Communication Networks 1 3
+CFOC641M Aircraft Design 1 3
+CFOC642M Conservation Economics 1 3
+CFOC643M Cryogenic Hydrogen Technology 1 2
+CFOC644M Explosions and Safety 1 3
+CFOC645M Financial Accounting 1 2
+CFOC646M Philosophy and Critical Thinking 1 3
+CFOC647M Air pollution and Control 1 3
+CFOC648M Centre-State Relations in India 1 2
+CFOC649M Energy Resources, Economics, and Sustainability 1 2
+CFOC650M Human Physiology 1 3
+CFOC651M Psychology of Stress, Health and Well-being 1 3
+CFOC652M Signal Processing Techniques and its Applications 1 3
+CFOC653M Strength & Conditioning for the Indian Population 1 3
+CFOC654M The Evolution of the Earth and Life 1 3
+CFOC655M United Nations Sustainable Development Goals (UN SDGs) 1 3
+CFOC656M Usability Engineering 1 3
+CFOC657M Understanding Incubation and Entrepreneurship 1 3
+CFOC658M Design Practice - II 1 2
+CFOC659M Essentials of Data Science With R Software - 1: Probability and Statistical Inference 1 3
+CFOC660M Applied Linear Algebra in AI and ML 1 3
+CFOC661M Architectural Approaches to Decarbonization of Buildings 1 3
+CFOC662M Ecosystem and Natural Resources 1 4
+CFOC663M Money, Banking & Financial Markets 1 3
+CFOC664M Mathematics for Machine Learning 1 3
+CFOC665M Advanced R Programming for Data Analytics in Business 1 3
+CFOC666M Scientific Computing using Python 1 3
+CFOC667M Business Intelligence & Analytics 1 3
+CFOC668M Aspen PlusÂ® Simulation Software - A Basic Course for Beginners 1 3
+CFOC669M Responsible & Safe AI Systems 1 3
+CFOC670M Strategy: An Introduction to Game Theory 1 2
+CFOC671M Ecology and Society 1 3
+CFOC672M Natural Resources Management 1 3
+CFOC673M Big Data Computing 1 2
+CFOC674M Essential Mathematics for Machine Learning 1 3
+CFOC675M Essentials of Data Science with R Software: Probability and Statistical Inference 1 3
+CFOC676M Environmental Geosciences 1 3
+CFOC677M Food Science and Technology 1 3
+CFOC678M Fundamentals of Ecology 1 3
+CFOC679M Basics of Crop Breeding and Plant Biotechnology 1 3
+CFOC680M Psychology of Personality and Individual Differences: Theory and Applications 1 3
+CFOC681M Computational Genomics 1 3
+CFOC682M Classics in Neuroscience 1 3
+CFOC683M Bioreactor Design and Analysis 1 2
+CFOC684M Banking and Financial Markets: A Risk Management Perspective 1 3
+CFOC685M Comprehensive Molecular Diagnostics and Advanced Gene Expression Analysis 1 3
+CFOC686M Enzyme Sciences and Technology 1 3
+CFOC687M Basic Course in Ornithology 1 3
+CFOC688M Soil and Water Engineering 1 3
+CFOC689M
+Semiconductor Devices for Next Generation Field Effect Transistors (More than
+Moore): A Physics Perspective 1 3
+CFOC690M EV - Vehicle Dynamics and Electric Motor Drives 1 2
+CFOC691M Urban Services Planning 1 3
+CFOC692M Education for Sustainable Development 1 3
+CFOC693M Modern Computer Vision 1 3
+CFOC694M Climate Change Science 1 3
+CFOC695M Training and Development 1 3
+CFOC696M Understanding Design 1 1
+CFOC697M Basic Construction Materials 1 3
+CFOC698M Mastering Speaking and Presentations: A Case Based Approach 1 2
+CFOC699M Quantum Algorithms and Cryptography 1 3
+CFOC700M Literature and Life 1 3
+CFOC701M Child Development 1 3
+CFOC702M Structure, Form and Architecture : The Synergy 1 2
+CFOC703M Development and Applications of Special Concretes 1 2
+CFOC704M
+Bioclimatic Architecture: Future Proofing with Simple and Advanced Passive
+Strategies 1 3
+CFOC705M Introduction to Graphic Design 1 2
+CFOC706M Project Management 1 2
+CFOC707M Fundamentals of Theoretical and Experimental Aerodynamics 1 3
+CFOC708M Urban Sociology 1 1
+CFOC709M Foundations of Quantum Theory: Relativistic Approach 1 3
+CFOC710M Time Series Modelling and Forecasting with Applications in R 1 3
+CFOC711M Online Communication in the Digital Age 1 3
+CFOC712M Financial Derivatives & Risk Management 1 3
+CFOC713M Advanced Course on Partial Differential Equations - II 1 2
+CFOC714M Blockchain and its Applications 1 3
+CFOC715M Business Analytics for Management Decision 1 3
+CFOC716M Business Development: From Start to Scale 1 3
+CFOC717M Business Ethics 1 3
+CFOC718M Probability - I with Examples Using R 1 3
+CFOC719M Design and Engineering of Computer Systems 1 2
+CFOC720M Affective Computing 1 3
+CFOC721M AI in Human Resource Management 1 3
+CFOC722M AI in Marketing 1 3
+CFOC723M Biological Data Analysis and Visualization with R 1 2
+CFOC724M Computer Vision and Image Processing - Fundamentals and Applications 1 3
+CFOC725M Exercise and Sports Biomechanics 1 3
+CFOC726M Functional Analysis and its Applications 1 3
+CFOC727M Introduction to Large Language Models (LLMs) 1 3
+CFOC728M Soil and Water Conservation Engineering 1 3
+CFOC729M Getting Started with Competitive Programming 1 3
+CFOC730M Advanced Contracts, Tendering and Public Procurement 1 3
+CFOC731M Advanced Level of Spoken Sanskrit 1 2
+CFOC732M An Introduction to Information Theory 1 2
+CFOC733M Cognitive Ergonomics 1 1
+CFOC734M Geophysical Exploration Methods 1 3
+CFOC735M Lighter Than Air Systems 1 3
+CFOC736M Organizational Behaviour: Individual Dynamics in Organization 1 3
+CFOC737M Victorian Literature: An Interdisciplinary Introduction 1 3
+CFOC738M Environmental Impact Assessment 1 3
+CFOC739M
+Advances in Additive Manufacturing of Materials: Current Status and Emerging
+Opportunities 1 3
+CFOC740M Foundation of Data Science 1 2
+CFOC741M Data-Driven Marketing Decision Making 1 3
+CFOC742M An Introduction to Urban Ecological Heritage: Theories and Applications 1 1
+ANNEXURE - II
+Approved MOOC courses for CAL curriculum
+Code Title Version Credits
+MOC1901 Advanced Green Manufacturing Systems 1 3
+MOC1902 Introduction to Cognitive Psychology 1 3
+MOC1903 Introduction to Political Theory 1 3
+MOC1904 Six Sigma 1 3
+MOC1905 Emotional Intelligence 1 2
+MOC1906 Manufacturing Strategy 1 2
+MOC1907 Supply Chain Analytics 1 2
+MOC1908 Systems Engineering: Theory and Practice 1 2
+MOC1909 Design Thinking - A Primer 1 1
+MOC1910 MCDM Techniques Using R and MATLAB 1 1
+MOC1911 Perspectives on Neurolinguistic 1 1
+MOC1912 Sociology of Science 1 1
+MOC1913 Contemporary Themes in Indiaâ€™s Economic Development and Economic Survey 1 3
+MOC1914 Problem Solving through Programming in C 1 3
+MOC1915 Design and Analysis of Algorithms 1 2
+MOC1916 Computer Vision 1 3
+MOC1917 Spatial Informatics 1 2
+MOC1918 Practical Machine Learning with Tensorflow 1 2
+MOC1919 Training of Trainers 1 3
+MOC1920 Knowledge Management 1 2
+MOC1921 Leadership 1 1
+MOC1922 Educational Leadership 1 2
+MOC1922 Educational Leadership 2 3
+MOC1923 Cost Accounting 1 1
+MOC1924 Practitioners Course In Descriptive, Predictive and Prescriptive Analytics 1 2
+MOC1925 Decision-Making Under Uncertainty 1 1
+MOC1926 Data Analysis and Decision Making - III 1 3
+MOC1927 Business Analytics and Data Mining Modeling Using R Part II 1 1
+MOC1928 Business Analytics and Text Mining Modeling Using Python 1 2
+MOC1929 Economics of Health and Health Care 1 2
+MOC1930 Human Resource Development 1 3
+MOC1931 Performance and Reward Management 1 3
+MOC1932 Corporate Social Responsibility 1 2
+MOC1933 E-Business 1 3
+MOC1934 Innovation, Business Models and Entrepreneurship 1 2
+MOC1935 The Ethical Corporation 1 2
+MOC1936 Toyota Production System 1 2
+MOC1937 Intellectual Property Rights and Competition Law 1 2
+MOC1938 Patent Search for Engineers and Lawyers 1 2
+MOC1939 Role of Craft and Technology in Interior - Architecture 1 2
+MOC1940 Glass In Buildings : Design And Applications 1 3
+MOC1941 Visual Perception and Art: A Survey Across the Cultures 1 1
+MOC1942 Mapping Signal Processing Algorithms to Architectures 1 3
+MOC1943 Introduction to Computer Vision 1 3
+MOC1944 Op-Amp Practical Applications: Design, Simulation and Implementation 1 3
+MOC1945 Fabrication Techniques for MEMs - based sensors: clinical Perspective 1 3
+MOC1946 Linear System Theory 1 3
+MOC1947 Advanced Linear Continuous Control Systems: Applications with MATLAB Programming and Simulink 1 2
+MOC1948 Introduction to Wireless and Cellular Communications 1 3
+MOC1949 Digital Switching - I 1 2
+MOC1950 Microelectronics: Devices To Circuits 1 3
+MOC1951 Digital Image Processing 1 3
+MOC1952 Pattern Recognition and Application 1 3
+MOC1953 Microwave Theory and Techniques 1 3
+MOC1954 Principles and Techniques of Modern Radar Systems 1 3
+MOC1955 Computational Electromagnetics 1 3
+MOC1956 Microwave Engineering 1 3
+MOC1957 Introduction to parallel Programming in Open MP 1 1
+MOC1958 Reinforcement Learning 1 3
+MOC1959 Applied Natural Language Processing 1 3
+MOC1960 Python for Data Science 1 1
+MOC1961 Data Science for Engineers 1 2
+MOC1962 Scalable Data Science 1 2
+MOC1963 Advanced Computer Architecture 1 2
+MOC1964 Software Project Management 1 3
+MOC1965 Software testing 1 3
+MOC1966 Hardware Modeling using Verilog 1 2
+MOC1967 Synthesis of Digital Systems 1 3
+MOC1968 Switching Circuits and Logic Design 1 3
+MOC1969 Demystifying networking 1 1
+MOC1970 Modern Algebra 1 2
+MOC1971 Introduction to Haskell Programming 1 2
+MOC1972 Flow through Porous Media 1 3
+MOC1973 Bioenergy 1 2
+MOC1974 Introduction to Biostatistics 1 2
+MOC1975 Nanotechnology in Agriculture 1 2
+MOC1976 Computer Aided Drug Design 1 2
+MOC1977 Drug Delivery: Principles and Engineering 1 3
+MOC1978 Functional Genomics 1 1
+MOC1979 Introduction to Proteogenomics 1 3
+MOC1980 Introduction to Mechanobiology 1 2
+MOC1981 WildLife Conservation 1 2
+MOC1982 Organic Chemistry in Biology and Drug Development 1 3
+MOC1983 Bioinorganic Chemistry 1 1
+MOC1984 Spectroscopic Techniques for Pharmaceutical and Biopharmaceutical Industries 1 3
+MOC1985 Biophysical chemistry 1 3
+MOC1986 Deep Learning 1 3
+MOC1987 Blockchain Architecture Design and use Cases 1 3
+MOC1988 Ethical Hacking 1 3
+MOC1989 Organic Farming for Sustainable Agricultural Production 1 2
+MOC1990 Positive Psychology 1 2
+MOC1991 Forests and their Management 1 3
+MOC1992 Forest Biometry 1 2
+MOC1993 Bioengineering: An Interface with Biology and Medicine 1 2
+MOC1994 Human Molecular Genetics 1 1
+MOC1995 Bioenergetics of Life Processes 1 1
+MOC1996 Computational Systems Biology 1 3
+MOC1997 Bio-Informatics: Algorithms and Applications 1 3
+MOC1998 Biostatistics and Design of Experiments 1 2
+MOC1999 Medical Biomaterials 1 2
+MOC2000 Demystifying the Brain 1 1
+MOC2001 Principles and Applications of NMR Spectroscopy 1 2
+MOC2002 Cell Culture Technologies 1 2
+MOC2003 Natural Hazards 1 2
+MOC2004 Modern Construction Materials 1 3
+MOC2005 Energy Efficiency, Acoustics and Daylighting in Building 1 3
+MOC2006 Fire Protection, Services and Maintenance Management of Building 1 3
+MOC2007 Electronic Waste Management - Issues And Challenges 1 1
+MOC2008 Higher Surveying 1 3
+MOC2009 Environmental Remediation of Contaminated Sites 1 3
+MOC2010 Soil Structure Interaction 1 3
+MOC2011 Introduction to Accounting and Finance for Civil Engineers 1 2
+MOC2012 Scheduling Techniques in Projects 1 1
+MOC2013 GPS Surveying 1 1
+MOC2014 Sustainable Materials and Green Buildings 1 3
+MOC2015 Geomorphic Processes: Landforms and Landscapes 1 2
+MOC2016 Introduction To Process Modeling in the Membrane Separation Process 1 1
+MOC2017 Computational Geometry 1 3
+MOC2018 Compiler Design 1 3
+MOC2019 Embedded System Design with ARM 1 2
+MOC2020 VLSI Physical Design 1 3
+MOC2021 Cloud computing 1 2
+MOC2022 Artificial Intelligence : Knowledge Representation And Reasoning 1 3
+MOC2023 Privacy and Security in Online Social Media 1 3
+MOC2024 Information Security - 5 - Secure Systems Engineering 1 2
+MOC2025 Model Checking 1 3
+MOC2026 Randomized Algorithms 1 3
+MOC2027 GPU Architectures and Programming 1 3
+MOC2028 Multi-Core Computer Architecture - Storage and Interconnects 1 2
+MOC2029 Data Analytics with Python 1 3
+MOC2030 Arithmetic Circuit Complexity 1 3
+MOC2031 Google Cloud Computing Foundation Course 1 2
+MOC2032 Consumer Behaviour 1 2
+MOC2033 Enhancing Soft Skills and Personality 1 2
+MOC2034 Introduction to Airplane Performance 1 2
+MOC2035 Rocket Propulsion 1 3
+MOC2036 Aircraft Maintenance 1 1
+MOC2037 Sustainable Architecture 1 3
+MOC2038 Introduction to History of Architecture in India 1 1
+MOC2039 Structure, Form, and Architecture : The Synergy 1 2
+MOC2040 Interactomics : Basics and Applications 1 3
+MOC2041 Introduction to Professional Scientific Communication 1 1
+MOC2042 Material and Energy Balances 1 3
+MOC2043 Thermodynamics for Biological Systems: Classical and Statistical Aspect 1 3
+MOC2044 Optical Spectroscopy and Microscopy : Fundamentals of Optical Measurements and Instrumentation 1 3
+MOC2045 Fundamentals of Semiconductor Devices 1 3
+MOC2046 Characterization of Construction Materials 1 3
+MOC2047 Introduction to Civil Engineering Profession 1 2
+MOC2048 Environmental Geomechanics 1 3
+MOC2049 Mechanical Characterization of Bituminous Materials 1 3
+MOC2050 Geosynthetics and Reinforced Soil Structures 1 3
+MOC2051 Geotechnical Engineering II Foundation Engineering 1 3
+MOC2052 Landscape Architecture and Site Planning - Basic Fundamentals 1 2
+MOC2053 Plastic Waste Management 1 2
+MOC2054 Advanced Topics in the Science and Technology of Concrete 1 1
+MOC2055 Applied Environmental Microbiology 1 3
+MOC2056 Digital Land Surveying And Mapping (DLS&M) 1 2
+MOC2057 Earthquake Geology: A tool for Seismic Hazard Assessment 1 3
+MOC2058 Introduction to Geographic Information Systems 1 1
+MOC2059 Structural Dynamics 1 3
+MOC2060 Water Supply Engineering 1 3
+MOC2061 Geo Spatial Analysis in Urban Planning 1 1
+MOC2062 Geotechnical Engineering - 1 1 3
+MOC2063 Maintenance and Repair of Concrete Structures 1 3
+MOC2064 Thermodynamics 1 3
+MOC2065 Geomorphology 1 3
+MOC2066 Remote Sensing Essentials 1 3
+MOC2067 Hydraulic Engineering 1 3
+MOC2068 Environmental Quality Monitoring and Analysis 1 3
+MOC2069 Electrochemical Technology in Pollution Control 1 2
+MOC2070 Advanced Thermodynamics 1 3
+MOC2071 Membrane Technology 1 3
+MOC2072 Computational Fluid Dynamics 1 3
+MOC2073 Transport phenomena 1 3
+MOC2074 Optimization in Chemical Engineering 1 3
+MOC2075 Soft Nano Technology 1 2
+MOC2076 Transport processes I - Heat and Mass Transfer 1 3
+MOC2077 Process Control - Design, Analysis and Assessment 1 3
+MOC2078 Heat Transfer 1 3
+MOC2079 Chemical Reaction Engineering II 1 3
+MOC2080 Multiphase Flows 1 2
+MOC2081 Mass Transfer Operations - I 1 3
+MOC2082 Waste to Energy Conversion
+1
+2
+MOC2083 Equipment Design : Mechanical Aspects
+1
+1
+MOC2084 An Introduction to Cardiovascular Fluid Mechanics
+1
+1
+MOC2085 Computer Aided Applied Single Objective Optimization
+1
+2
+MOC2085 Computer Aided Applied Single Objective Optimization
+2
+3
+MOC2086 Basic Principles and Calculations in Chemical Engineering
+1
+3
+MOC2087 Introduction to Blockchain Technology and Applications
+1
+2
+MOC2088 Foundations of Cryptography
+1
+3
+MOC2089 Introduction to Database Systems
+1
+3
+MOC2090 Operating System
+1
+3
+MOC2091 Programming in C++
+1
+2
+MOC2092 Programming in Java
+1
+3
+MOC2093 Data Base Management System
+1
+2
+MOC2094 Introduction to Algorithms and Analysis
+1
+3
+MOC2095 Data Mining
+1
+2
+MOC2096 Embedded Systems Design
+1
+3
+MOC2097 Real Time Operating System
+1
+1
+MOC2098 Introduction to Soft Computing
+1
+2
+MOC2099 Cryptography and Network Security
+1
+3
+MOC2100 Introduction to Internet of Things
+1
+3
+MOC2101 Computer Networks and Internet Protocol
+1
+3
+MOC2102 Introduction to Industry 4.0 and Industrial Internet of Things
+1
+3
+MOC2103 Computer Architecture
+1
+3
+MOC2104 Programming, Data Structures And Algorithms Using Python
+1
+2
+MOC2105 Introduction to Machine Learning
+1
+3
+MOC2106 Social Networks
+1
+3
+MOC2107 Foundations to Computer Systems Design
+1
+3
+MOC2108 The Joy of Computing using Python
+1
+3
+MOC2109 Discrete Mathematics
+1
+3
+MOC2110 An Introduction to Artificial Intelligence
+1
+3
+MOC2111 User-centric Computing for Human-Computer Interaction
+1
+3
+MOC2112 Cloud Computing and Distributed Systems
+1
+2
+MOC2113 Machine Learning
+1
+2
+MOC2114 Modern Application Development
+1
+3
+MOC2115 An Introduction To Programming Through C++
+1
+3
+MOC2116 Design and Pedagogy of the Introductory Programming Course
+1
+1
+MOC2117 Quantitative Methods in Chemistry
+1
+3
+MOC2118 Basics in Inorganic Chemistry
+1
+1
+MOC2119 Ultrafast Laser Spectroscopy
+1
+3
+MOC2120 Transition Metal Organometallics in Catalysis and Biology
+1
+3
+MOC2121 Essentials of Biomolecules : Nucleic Acids and Peptides
+1
+3
+MOC2122 Fundamentals of Spectroscopy
+1
+3
+MOC2123 Advanced Chemical Thermodynamics and Kinetics
+1
+3
+MOC2124 Biochemistry
+1
+3
+MOC2125 Organometallic Chemistry
+1
+1
+MOC2126 Chemical Applications of Symmetry and Group Theory
+1
+2
+MOC2127 Basic Thermodynamics : Classical and Statistical Approaches
+1
+3
+MOC2128 Medicinal Chemistry 1 3
+MOC2129 Design, Technology and Innovation 1 2
+MOC2130 Geographic Information System 1 3
+MOC2131 Product Design and Innovation 1 1
+MOC2132 Fundamentals of Automotive Systems 1 3
+MOC2133 Electronics Equipment Integration and Prototype Building 1 2
+MOC2134 High Power Multilevel Converters-Analysis, Design and Operational Issues 1 3
+MOC2135 Fuzzy Sets, Logic and Systems and Applications 1 3
+MOC2136 Transmission Lines and Electromagnetic Waves 1 3
+MOC2137 Digital IC Design 1 3
+MOC2138 Signals and Systems 1 3
+MOC2139 Power Management Integrated Circuits 1 3
+MOC2140 DC Power Transmission Systems 1 3
+MOC2141 Microprocessors and Interfacing 1 3
+MOC2142 Design and Simulation of Power Conversion using Open Source Tools 1 1
+MOC2143 Integrated Circuits, MOSFETs, OP-Amps and their Applications 1 3
+MOC2144 Electronic Systems for Cancer Diagnosis 1 3
+MOC2145 Principles of Signals and Systems 1 3
+MOC2146 Principles of Communication Systems - I 1 3
+MOC2147 Principles of Digital Communication 1 3
+MOC2148 Electric Vehicles - Part 1 1 1
+MOC2149 Nonlinear Adaptive Control 1 1
+MOC2149 Nonlinear Adaptive Control 2 3
+MOC2150 Antennas 1 3
+MOC2151 Multirate DSP 1 3
+MOC2152 Control Engineering 1 3
+MOC2153 Introduction to Photonics 1 3
+MOC2154 Microwave Integrated Circuits 1 2
+MOC2155 Analog IC Design 1 3
+MOC2156 Analog Circuits 1 3
+MOC2157 Advance Power Electronics and Control 1 2
+MOC2158 CMOS Digital VLSI Design 1 2
+MOC2159 Analog Circuits and Systems through SPICE Simulation 1 3
+MOC2160 Discrete Time Signal Processing 1 2
+MOC2161 Digital Electronic Circuits 1 3
+MOC2162 Fundamentals of MIMO Wireless Communication 1 2
+MOC2163 Spread Spectrum Communications and Jamming 1 3
+MOC2164 Basic Building Blocks of Microwave Engineering & Design Principles of RF and Microwave Filters and Amplifiers 1 2
+MOC2165 Evolution of Air Interface towards 5G 1 2
+MOC2166 Architectural Design of Digital Integrated Circuits 1 3
+MOC2167 Electrical Machines - II 1 3
+MOC2168 Medical Image Analysis 1 1
+MOC2169 Biomedical Signal Processing 1 3
+MOC2170 Microprocessors And Microcontrollers 1 3
+MOC2171 Recent Advances in Transmission Insulator 1 1
+MOC2172 VLSI Signal Processing 1 2
+MOC2173 Analog Electronic Circuits 1 3
+MOC2174 Network Analysis 1 3
+MOC2175 Optical Engineering 1 3
+MOC2176 Mathematical Methods and Techniques in Signal Processing 1 3
+MOC2177 A brief introduction of Micro - Sensors 1 1
+MOC2178 Statistical Signal Processing 1 3
+MOC2179 Nonlinear System Analysis 1 3
+MOC2180 Ethics in Engineering Practice 1 2
+MOC2181 Introduction to Research 1 2
+MOC2182 Matlab Programming for Numerical Computation 1 2
+MOC2182 Matlab Programming for Numerical Computation 2 3
+MOC2183 Roadmap for Patent Creation 1 2
+MOC2184 Entrepreneurship Essentials 1 3
+MOC2185 Fuzzy Logic and Neural Networks 1 2
+MOC2186 Microeconomics : Theory & Applications 1 3
+MOC2187 Introduction to Environmental Economics 1 3
+MOC2188 Energy Resources, Economics and Environment 1 3
+MOC2189 Literary Criticism (From Plato to Leavis) 1 3
+MOC2190 Twentieth Century Fiction 1 3
+MOC2191 Effective Writing 1 1
+MOC2192 Strategic Trade and Protectionism - Theories and Empirics 1 2
+MOC2193 Introduction to Cultural Studies 1 3
+MOC2194 Introduction to Basic Spoken Sanskrit 1 1
+MOC2195 Speaking Effectively 1 2
+MOC2196 Soft Skill Development 1 2
+MOC2197 Intellectual Property 1 3
+MOC2198 English Language for Competitive Exams 1 3
+MOC2199 English Literature for competitive Exams 1 2
+MOC2200 Language and Mind 1 2
+MOC2201 The Nineteenth - Century English Novel 1 3
+MOC2202 Introduction to World Literature 1 3
+MOC2203 Patent Drafting for Beginners 1 1
+MOC2204 Patent Law for Engineers and Scientists 1 3
+MOC2205 Economic Growth & Development 1 2
+MOC2206 Human Behaviour 1 2
+MOC2207 Introduction to Modern Indian Political Thought 1 3
+MOC2208 English Literature of the Romantic Period, 1798 - 1832 1 2
+MOC2209 Literature, Culture and Media 1 3
+MOC2210 Introduction to Brain & Behaviour 1 2
+MOC2211 Modern Indian Writing in Translation 1 3
+MOC2212 Introduction to Political Ideologies: Contexts, Ideas, and Practices 1 3
+MOC2213 Indian Business History 1 2
+MOC2214 German - II 1 3
+MOC2215 German - I 1 3
+MOC2216 Feminism : Concepts and Theories 1 3
+MOC2217 An Introduction to Smooth Manifolds 1 3
+MOC2218 Measure Theory 1 3
+MOC2219 Basic Real Analysis 1 3
+MOC2220 Probabilistic Methods in PDE 1 3
+MOC2221 Graph Theory 1 2
+MOC2222 Transform Calculus and its applications in Differential Equations 1 3
+MOC2223 Integral and Vector Calculus 1 3
+MOC2224 Basic Linear Algebra 1 2
+MOC2225 Introduction to Rings And Fields 1 2
+MOC2226 Numerical Methods : Finite Difference Approach 1 1
+MOC2227 Numerical Linear Algebra 1 3
+MOC2228 Ordinary and Partial Differential Equations and Applications 1 3
+MOC2229 Advanced Engineering Mathematics 1 3
+MOC2230 Mathematical Methods and its Applications 1 3
+MOC2231 Multivariable Calculus 1 2
+MOC2232 Chaotic Dynamical System 1 3
+MOC2233 Engineering Mathematics II 1 3
+MOC2234 Advanced Probability Theory 1 3
+MOC2235 Statistical Inference 1 2
+MOC2236 Introduction to Algebraic Geometry and Commutative Algebra 1 3
+MOC2237 Linear Algebra 1 3
+MOC2238 Introduction to Probability and Statistics 1 1
+MOC2239 Descriptive Statistics with R Software 1 2
+MOC2240 Engineering Mechanics - Statics and Dynamics 1 2
+MOC2241 Experimental Stress Analysis 1 3
+MOC2242 Robotics and Control : Theory and Practice 1 2
+MOC2243 Computational Fluid Dynamics for Incompressible Flows 1 3
+MOC2244 Experimental Methods in Fluid Mechanics 1 3
+MOC2245 Foundations of Computational Materials Modelling 1 3
+MOC2246 Acoustic Materials and Metamaterials 1 2
+MOC2247 Power Plant Engineering 1 2
+MOC2248 Applied Ergonomics 1 3
+MOC2249 Product Design and Manufacturing 1 3
+MOC2250 Manufacturing Process Technology I & II 1 3
+MOC2251 Introduction To Mechanical Micro Machining 1 3
+MOC2252 Strategies for Winning Business Negotiation 1 1
+MOC2253 Gear And Gear Unit Design : Theory And Practice 1 2
+MOC2254 Conduction and Convection Heat Transfer 1 3
+MOC2255 Laws of Thermodynamics 1 1
+MOC2256 Kinematics of Mechanisms and Machines 1 2
+MOC2257 Introduction To Fluid Mechanics 1 3
+MOC2258 Fundamental of Welding Science and Technology 1 2
+MOC2259 Introduction to Abrasive Machining and Finishing Processes 1 2
+MOC2260 Automatic Control 1 2
+MOC2261 Inspection and Quality Control in Manufacturing 1 1
+MOC2262 Diffusion in Multicomponent Solids 1 3
+MOC2263 Processing of Polymers and Polymer Composites 1 2
+MOC2264 Operations Management 1 3
+MOC2265 Convective Heat Transfer 1 1
+MOC2266 Two phase flow and heat transfer 1 1
+MOC2267 Steam and Gas Power Systems 1 2
+MOC2268 Principles of Casting Technology 1 2
+MOC2269 Financial Mathematics 1 3
+MOC2270 Modelling and Simulation of Dynamic Systems 1 2
+MOC2271 Fundamentals of combustion for propulsion 1 2
+MOC2272 Industrial Automation And Control 1 3
+MOC2273 Fundamentals of Nuclear Power Generation 1 3
+MOC2274 Mechanics of Machining 1 2
+MOC2275 IC Engines and Gas Turbines 1 3
+MOC2276 Principles of Industrial Engineering 1 3
+MOC2277 Computer Integrated Manufacturing 1 3
+MOC2278 Machining Science 1 1
+MOC2279 Introduction to Stochastic Processes 1 3
+MOC2280 Introduction to System Dynamics Modeling 1 2
+MOC2281 Management of New Products and Services 1 1
+MOC2282 Integrated Marketing Management 1 2
+MOC2283 Simulation of Business Systems: An Applied Approach 1 2
+MOC2284 Production and Operation Management 1 3
+MOC2285 Services Marketing : Integrating People, Technology, Strategy 1 2
+MOC2286 Managerial Skills for Interpersonal Dynamics 1 3
+MOC2287 Financial Institutions and Markets 1 3
+MOC2288 Business Analytics For Management Decision 1 3
+MOC2289 Services Marketing : A Practical Approach 1 1
+MOC2290 Sales and Distribution Management 1 2
+MOC2291 Principles of Human Resource Management 1 2
+MOC2292 Managing change in organizations 1 2
+MOC2293 Management of Inventory Systems 1 3
+MOC2294 Quality Design And Control 1 3
+MOC2295 Foundation Course in Managerial Economics 1 2
+MOC2296 Engineering Econometrics 1 3
+MOC2297 Financial Statement Analysis and Reporting 1 3
+MOC2298 Business Statistics 1 3
+MOC2299 Global Marketing Management 1 2
+MOC2300 Marketing Research and Analysis - II 1 3
+MOC2301 Infrastructure Planning and Managements 1 3
+MOC2302 Modelling and Analytics for Supply Chain Management 1 3
+MOC2303 Marketing Analytics 1 3
+MOC2304 Financial Management For Managers 1 3
+MOC2305 Management of Commercial Banking 1 3
+MOC2306 Behavioral and Personal Finance 1 2
+MOC2307 Total Quality Management - 1 1 2
+MOC2308 Entrepreneurship 1 3
+MOC2309 Modeling of Tundish Steelmaking Process in Continuous Casting 1 2
+MOC2310 Fundamentals of Electronic Materials and Devices 1 2
+MOC2311 Introduction to Materials Science and Engineering 1 3
+MOC2312 Corrosion - Part I 1 2
+MOC2313 Solar Photovoltaics: Principles, Technologies and Materials 1 2
+MOC2314 Welding Processes 1 3
+MOC2315 Theory and Practice of Non Destructive Testing 1 2
+MOC2316 Steel Quality: Role of Secondary Refining and Continuous Casting 1 3
+MOC2317 Materials Science and Engineering 1 2
+MOC2318 Surface Engineering of Nanomaterials 1 2
+MOC2319 Dealing with Materials Data: Collection, Analysis and Interpretation 1 3
+MOC2320 Friction and Wear of Materials: Principle and Case Studies 1 2
+MOC2321 Material Characterization 1 3
+MOC2322 Offshore Structures Under Special Environmental Loads Including Fire Resistance 1 3
+MOC2323 Physics of Biological Systems 1 3
+MOC2324 Group Theory methods in Physics 1 3
+MOC2325 Experimental Physics - II 1 3
+MOC2326 Quantum Mechanics I 1 3
+MOC2327 A Brief Course on Superconductivity 1 1
+MOC2328 Fiber Optics 1 2
+MOC2329 Electromagnetism 1 3
+MOC2330 Experimental Physics III 1 3
+MOC2331 Electronic Theory of Solids 1 3
+MOC2332 Introduction to Atmospheric and Space Sciences 1 3
+MOC2333 Optical Sensors 1 1
+MOC2334 Evaluation of Textiles Materials 1 3
+MOC2335 Advanced Textile Printing Technology 1 2
+MOC2336 Textured Yarn Technology 1 3
+MOC2337 Theory of Yarn Structure 1 3
+MOC2337 Theory of Yarn Structure 2 2
+MOC2338 Testing of Functional and Technical Textiles 1 2
+MOC2339 Applied Optimization for Wireless, Machine Learning, Big Data 1 3
+MOC2340 Deep Learning for Computer Vision 1 3
+MOC2341 Deep Learning for Visual Computing 1 3
+MOC2342 Principles of Compiler Design 1 3
+MOC2343 International Business 1 3
+MOC2344 Learning Analytics Tools 1 3
+MOC2345 Advanced IoT Applications 1 2
+MOC2346 Algorithms for Big Data 1 2
+MOC2347 Decision Making using Financial Accounting 1 2
+MOC2348 Introduction on Intellectual Property to Engineers and Technologists 1 2
+MOC2349 Introduction to Quantum Computing: Quantum Algorithms and Qiskit 1 1
+MOC2350 Numerical Analysis 1 4
+MOC2350 Numerical Analysis 2 3
+MOC2351 Quantum Technology and Quantum Phenomena in Macroscopic Systems 1 3
+MOC2352 Electrochemical Impedance Spectroscopy 1 3
+MOC2353 Carbon Materials and Manufacturing 1 3
+MOC2354 Electronic Packaging and Manufacturing 1 2
+MOC2355 Finite Element Method 1 3
+MOC2356 Physics of Materials 1 3
+MOC2357 X-ray Crystallography and Diffraction 1 3
+MOC2358 Solar Photovoltaics Fundamentals, Technology and Applications 1 2
+MOC2359 Design of Photovoltaic Systems
+1
+3
+MOC2360 Fundamentals of Micro and Nanofabrication
+1
+3
+MOC2361 Biomedical Nanotechnology
+1
+1
+MOC2362 Design and Analysis of VLSI Subsystems
+1
+3
+MOC2363 Physics of Nanoscale Devices
+1
+3
+MOC2364 Photonic Integrated Circuit
+1
+3
+MOC2365 Technologies for Clean and Renewable Energy Production
+1
+2
+MOC2366 Elements of Solar Energy Conversion
+1
+3
+MOC2367 Physics of Renewable Energy Systems
+1
+3
+MOC2368 Structural Analysis of Nanomaterials
+1
+1
+MOC2369 Computational Approach to Materials Science and Engineering
+1
+2
+MOC2370 Safety in Construction
+1
+2
+MOC2371 Wildlife Ecology
+1
+3
+MOC2372 Public Speaking
+1
+3
+MOC2373 Principles of Management
+1
+3
+MOC2374 Aircraft structures - I
+1
+2
+MOC2375 Space Flight Mechanics
+1
+3
+MOC2376 Dairy And Food Process And Products Technology
+1
+3
+MOC2377 Fundamentals Of Food Process Engineering
+1
+3
+MOC2378 Integrated Waste Management For A Smart City
+1
+3
+MOC2379 Wastewater Treatment and Recycling
+1
+3
+MOC2380 Algorithmic Game Theory
+1
+3
+MOC2381 Computational Number Theory and Algebra
+1
+3
+MOC2382 Great Experiments In Psychology
+1
+1
+MOC2383 Spoken Sanskrit: Basic and Intermediate Levels
+1
+3
+MOC2384 Urbanization and Environment
+1
+2
+MOC2385 Water Society and Sustainability
+1
+1
+MOC2386 Introduction to Indian Art - An Appreciation
+1
+1
+MOC2387 Indian Art: Materials, Techniques and Artistic Practices
+1
+3
+MOC2388 An Introduction to Indian Literary Theory
+1
+2
+MOC2389 Partition of India in Print Media and Cinema
+1
+3
+MOC2390 Economics of Banking and Finance Markets
+1
+3
+MOC2391 Matrix Solver
+1
+3
+MOC2392 Geometry of Vision
+1
+1
+MOC2393 Management Information System
+1
+3
+MOC2394 Soft Skills For Business Negotiations And Marketing Strategies
+1
+3
+MOC2395 Stress Management
+1
+1
+MOC2396 Customer Relationship Management
+1
+2
+MOC2397 Gender Justice and Workplace Security
+1
+1
+MOC2398 Surface Mining Technology
+1
+3
+MOC2399 Solid State Physics
+1
+3
+MOC2400 Getting Started with Competitive Programming
+1
+3
+MOC2401 Psychology of Stress, Health and Well-being
+1
+3
+MOC2402 Advance Course In Social Psychology
+1
+3
+MOC2403 Product and Brand Management
+1
+3
+MOC2404 Quantitative Investment Management
+1
+2
+MOC2405 Entrepreneurship and IP Strategy
+1
+2
+MOC2406 Ecology and Environment 1 2
+MOC2407 Introduction to Game Theory and Mechanism Design 1 3
+MOC2408 Corporate Finance 1 2
+MOC2409 Globalization and Culture 1 2
+MOC2410 Building Materials and Composites 1 2
+MOC2411 Marketing Management - I 1 2
+MOC2412 Introduction to Machine Learning - IITKGP 1 2
+MOC2413 Industrial Safety Engineering 1 3
+MOC2414 Ecology and Society 1 3
+MOC2415 Sociology and Resource Management 1 1
+MOC2416 Yoga and Positive Psychology for Managing Career and Life 1 2
+MOC2417 Data Structure and Algorithms using Java 1 3
+MOC2418 Educational Leadership_3 1 3
+MOC2419 System Design For Sustainability 1 3
+MOC2420 Gender and Literature 1 2
+MOC2421 Introduction to Astrophysical Fluids 1 3
+MOC2422 Advanced Thermodynamics and Combustion 1 3
+MOC2423 Postmodernism in Literature 1 2
+MOC2424 Natural Language Processing 1 3
+MOC2425 Appreciating Carnatic Music 1 2
+MOC2426 Body language: Key to Professional Success 1 1
+MOC2427 Business To Business Marketing 1 3
+MOC2428 Conservation Geography 1 3
+MOC2429 Enclosure Design of Electronics Equipment 1 3
+MOC2430 Environment and Development 1 3
+MOC2431 Introduction to Aerospace Engineering 1 3
+MOC2432 Operations and Supply Chain Management 1 3
+MOC2433 Programming in Modern C++ 1 3
+MOC2434 Psychology Of Learning 1 3
+MOC2435 Urban utilities Planning : Water Supply, Sanitation and Drainage 1 3
+MOC2436 Research Methodology 1 2
+MOC2437 Conservation Economics 1 3
+MOC2438 AI in Marketing 1 3
+MOC2439 Business Intelligence & Analytics 1 3
+MOC2440 Psychology of Emotion: Theory and Applications 1 3
+MOC2441 Project Management 1 2
+MOC2442 Leadership and Team Effectiveness 1 3
+MOC2443 Safety and Risk Analytics 1 3
+MOC2444 The Evolution of the Earth and Life 1 3
+MOC2445 Air pollution and Control 1 3
+MOC2446 Centre-State Relations in India 1 2
+MOC2447 Energy Resources, Economics, and Sustainability 1 2
+MOC2448 Human Physiology 1 3
+MOC2449 Signal Processing Techniques and its Applications 1 3
+MOC2450 Strength & Conditioning for the Indian Population 1 3
+MOC2451 United Nations Sustainable Development Goals (UN SDGs) 1 3
+MOC2452 Usability Engineering 1 3
+MOC2453 Understanding Incubation and Entrepreneurship 1 3
+MOC2454 Design Practice - II 1 2
+MOC2455 Essentials of Data Science With R Software - 1: Probability and Statistical Inference 1 3
+MOC2456 Applied Linear Algebra in AI and ML 1 3
+MOC2457 Introduction to Atmospheric and Space Sciences 1 3
+MOC2458 Business analytics and data mining Modeling using R 1 3
+MOC2459 Introduction to Intellectual Property 1 3
+MOC2460 Aircraft Design 1 3
+MOC2461 Business Forecasting 1 2
+MOC2462 Architectural Approaches to Decarbonization of Buildings 1 3
+MOC2463 Money, Banking & Financial Markets 1 3
+MOC2464 Advanced R Programming for Data Analytics in Business 1 3
+MOC2465 Scientific Computing using Python 1 3
+MOC2466 Business Fundamentals for Entrepreneurs 1 1
+MOC2467 Work System Design 1 3
+MOC2468 AI in Human Resource Management 1 3
+MOC2469 Education for Sustainable Development 1 3
+MOC2470 Urban Services Planning 1 2
+MOC2471 Bioclimatic Architecture: Future Proofing with Simple and Advanced Passive Strategies 1 3
+MOC2472 Quantum Algorithms and Cryptography 1 3
+MOC2473 Environmental Impact Assessment 1 3
+MOC2474 Oral Biology 1 2
+MOC2475 Time Series Modelling and Forecasting with Applications in R 1 3
+MOC2476 Online Communication in the Digital Age 1 3
+MOC2477 Fundamentals of Ecology 1 3
+MOC2478 Food Science and Technology
+""".strip().split('\n')
+
+cleaned_rows = []
+valid_prefixes = ("CFOC", "MOC")
+
+for line in data:
+    parts = line.strip().split()
+
+    # Only keep lines with at least 4 parts (code, title, version, credits)
+    if len(parts) < 4:
+        continue  # skip bad/short lines
+
+    try:
+        code = parts[0]
+        version = parts[-2]
+        credits = parts[-1]
+        title = ' '.join(parts[1:-2])
+
+        # Optional: skip if any value is clearly broken
+        if not code.startswith(valid_prefixes) or not credits.isdigit() or not version.isdigit():
+            continue
+
+        cleaned_rows.append([code, title, version, credits])
+    except Exception as e:
+        continue  # skip if anything fails
+
+# Save to CSV
+with open("cleaned_courses.csv", "w", newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(["Code", "Title", "Version", "Credits"])
+    writer.writerows(cleaned_rows)
+
+print(f"✅ Cleaned and saved {len(cleaned_rows)} valid courses.")
