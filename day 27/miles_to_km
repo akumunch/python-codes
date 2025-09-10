@@ -1,0 +1,36 @@
+from tkinter import *
+
+window= Tk()
+window.title("Mile to Km Converter")
+window.minsize(width=300,height=100)
+
+label= Label(text="")
+label.grid(row=0,column=0)
+label.config(padx=50,pady=0)
+
+entry= Entry(width=20)
+entry.grid(row=0,column=1)
+
+miles= Label(text="Miles")
+miles.grid(row=0,column=2)
+
+equal= Label(text="is equal to")
+equal.grid(row=1,column=0)
+
+kms= Label(text=0)
+kms.grid(row=1,column=1)
+
+
+Km= Label(text="Km")
+Km.grid(row=1,column=2)
+
+def command():
+    kms.config(text=round(float(entry.get())*1.609,2))
+
+button= Button(text="Calculate",command=command)
+button.grid(row=2,column=1)
+
+
+
+
+window.mainloop()

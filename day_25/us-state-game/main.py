@@ -23,11 +23,7 @@ def getcords(answer,dict):
 
 def exitsequence(states_left,data):
     states= data["state"].to_list()
-    for state in states:
-        if (state in correct_guesses):
-            continue
-        else:
-            states_left.append(state)
+    states_left=[state for state in states if state not in correct_guesses]
     dataframe_left= pandas.DataFrame(states_left)
     csv_left=dataframe_left.to_csv('us-state-game/states_to_learn.csv')
 
