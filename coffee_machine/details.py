@@ -1,3 +1,4 @@
+#details.py
 MENU = {
     "espresso": {
         "ingredients": {
