@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 import pyperclip
+import json
 FONT_NAME = "Courier"
 entries={"website":"default", "email":"default", "password":"yesitsme"}
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
@@ -33,17 +34,44 @@ def write(entries):
     website= website_entry.get()
     email= email_entry.get()
     password= password_entry.get()
+
+    new_data= {website: {"email":email, "password":password}}
+
     entries["website"]=website
     entries["email"]=email
     entries["password"]=password
     if (len(website)==0 or len(password)==0):
         messagebox.showinfo(title="oops",message="Please don't leave any fields empty!")
     else:
-        is_ok= messagebox.askokcancel(title=website, message=f"These are the details you entered:\nemail: {email},\n password: {password}\nIs it ok to save?")
-        if is_ok:
-            with open("data.txt","a") as f:
-                f.write(f'{entries["website"]} | {entries["email"]} | {entries["password"]}\n')
-            print("added to file: ",entries)
+        try:
+            with open("data.json","r") as f: 
+                data= json.load(f)
+                data.update(new_data)
+
+        except FileNotFoundError:
+            with open("data.json","w") as f: 
+                json.dump(new_data, f,indent=4)
+
+        else:
+            with open("data.json","w") as f: 
+                json.dump(data, f,indent=4)
+
+# ---------------------------- Search pass ------------------------------- #
+def find_password():
+    website= website_entry.get()
+    try: 
+        with open("data.json","r") as f: 
+            data=json.load(f)
+    except FileNotFoundError:
+        messagebox.showinfo(title="Error",message="No Data File Found")
+    else: 
+        if website in data:
+            messagebox.showinfo(title=website,message=f'Email: {data[website]["email"]}\nPassword: {data[website]["password"]}')
+        else: 
+            messagebox.showinfo(title="Error",message="Website Not Found") 
+             
+
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 window=Tk()
@@ -79,6 +107,9 @@ password_entry=Entry(width=35)
 password_entry.grid(row=3,column=1,columnspan=2)
 def clear_password_entry():
     password_entry.delete(0,END)
+
+search_button= Button(text="Search",command= find_password,width=14)
+search_button.grid(row=1,column=3)
 
 gen_password_button=Button(text="Generate Password",command=pass_gen)
 gen_password_button.grid(row=3,column=3,padx=5)
