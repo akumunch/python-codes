@@ -1,0 +1,2 @@
+This is a special one for me, i created an automatic mail sender program where a mail will be sent to the people whom ive added in the csv file. I also added this to pythonanywhere.com so that it can check everyday at 12.00 AM IST 
+and send birthday wishes if at all anyone has a birthday on that day.
