@@ -1,5 +1,6 @@
 from twilio.rest import Client
 import os
+import smtplib
 
 class NotificationManager:
     #This class is responsible for sending notifications with the deal flight details.
@@ -16,4 +17,15 @@ class NotificationManager:
             to=f"whatsapp:{self.to}"
             )
         print(self.message.status)
+
+    def send_email(self):
+        my_email= "khaboostest@gmail.com"
+        password= "ljqldewxlakektyp"
+
+        with smtplib.SMTP("smtp.gmail.com") as connection:
+            connection.starttls()
+            connection.login(user=my_email,password=password)
+            connection.sendmail(from_addr=my_email, 
+                                to_addrs=self.to,
+                                msg=f"{self.msg}")
             

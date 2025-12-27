@@ -5,7 +5,7 @@ from pprint import pprint
 class FlightSearch():
     #This class is responsible for structuring the flight data.
     token= None
-    def __init__(self,origin:str,destination:str):
+    def __init__(self,origin:str,destination:str,nonStop=True):
         self.api_key= os.environ.get("AMADEUS_API_KEY")
         self.api_secret=os.environ.get("AMADEUS_API_SECRET")
         self.url= "https://test.api.amadeus.com/v2/shopping/flight-offers"
@@ -18,7 +18,8 @@ class FlightSearch():
         "originLocationCode": origin,
         "destinationLocationCode": destination,
         "departureDate": "2026-01-10",
-        "adults": 1
+        "adults": 1,
+        "nonStop":nonStop
         }
 
     def search(self):
@@ -40,4 +41,3 @@ class FlightSearch():
         response= requests.post(url=self.test_url,data=data,headers=headers).json()
         FlightSearch.token=  response['access_token']
         return FlightSearch.token
-

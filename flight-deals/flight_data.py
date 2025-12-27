@@ -6,12 +6,17 @@ class FlightData:
         self.lowestPrice=float("inf")
         for data in offers['data']:
             dep_date= self.get_date(data)
+            
             if (from_date<dep_date<to_date and 
                 float(self.lowestPrice)>float(data['price']['grandTotal'])):
                 self.lowestPrice= float(data['price']['grandTotal'])
                 self.date_of_flight= dep_date
                 self.airline_code= data['validatingAirlineCodes'][0]
                 self.time_flight= self.get_time(data)
+                segments=data['itineraries'][0]['segments']
+                self.stops=len(segments)-1
+                self.destination_airport= data['itineraries'][0]['segments'][-1]['arrival']['iataCode']
+    
     def get_date(self,data):
         return data['itineraries'][0]['segments'][0]["departure"]["at"].split("T")[0]
     def get_time(self,data):
