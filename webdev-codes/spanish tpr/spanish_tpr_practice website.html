@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish Action Commands Practice</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        .sections {
+            display: grid;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card {
+            background: #f8f9fa;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border-left: 4px solid #667eea;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            background: #e8eaf6;
+            transform: translateX(5px);
+        }
+        .spanish {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.1em;
+        }
+        .english {
+            color: #666;
+            font-size: 0.95em;
+            margin-top: 4px;
+        }
+        button {
+            display: block;
+            margin: 30px auto;
+            padding: 15px 40px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #764ba2;
+        }
+        .section-btn {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 0.9em;
+        }
+        .practice-mode {
+            display: none;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .practice-mode.active {
+            display: block;
+        }
+        .command-display {
+            font-size: 2.5em;
+            color: #667eea;
+            margin: 30px 0;
+            font-weight: bold;
+            min-height: 60px;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .controls button {
+            margin: 5px;
+        }
+        #hint {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+            min-height: 30px;
+            font-weight: 500;
+        }
+        .hidden {
+            display: none;
+        }
+        .answer-section {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Spanish Action Commands</h1>
+        
+        <div id="listView" class="sections">
+            <!-- Populated by JavaScript -->
+        </div>
+        
+        <button onclick="startPractice()">🎮 Start Practice Mode (All)</button>
+        
+        <div id="practiceMode" class="practice-mode">
+            <h2 id="practiceTitle">Listen & Do!</h2>
+            <div class="command-display" id="commandDisplay"></div>
+            <div class="controls">
+                <button onclick="nextCommand()">Next ➡️</button>
+                <button onclick="speakCommand()">🔊 Speak</button>
+                <button onclick="endPractice()">Back</button>
+            </div>
+            <div class="answer-section">
+                <button id="viewAnswerBtn" onclick="toggleAnswer()">👁️ View Answer</button>
+                <p id="hint" class="hidden"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const sections = [
+            {
+                title: "1. Body & Position",
+                commands: [
+                    { spanish: "Levántate", english: "Stand up" },
+                    { spanish: "Siéntate", english: "Sit down" },
+                    { spanish: "Ponte de pie", english: "Get on your feet" },
+                    { spanish: "Agáchate", english: "Bend down" },
+                    { spanish: "Salta en tu lugar", english: "Jump in place" },
+                    { spanish: "Da un salto grande", english: "Jump high" },
+                    { spanish: "Da una vuelta", english: "Spin around" },
+                    { spanish: "Da media vuelta", english: "Turn halfway around" }
+                ]
+            },
+            {
+                title: "2. Movement & Direction",
+                commands: [
+                    { spanish: "Camina despacio", english: "Walk slowly" },
+                    { spanish: "Corre rápido", english: "Run fast" },
+                    { spanish: "Da un paso atrás", english: "One step back" },
+                    { spanish: "Da dos pasos adelante", english: "Two steps forward" },
+                    { spanish: "Gira a la izquierda", english: "Turn left" },
+                    { spanish: "Gira a la derecha", english: "Turn right" },
+                    { spanish: "Camina hacia la puerta", english: "Walk toward the door" }
+                ]
+            },
+            {
+                title: "3. Hands & Arms",
+                commands: [
+                    { spanish: "Levanta la mano", english: "Raise your hand" },
+                    { spanish: "Baja la mano", english: "Lower your hand" },
+                    { spanish: "Levanta ambas manos", english: "Raise both hands" },
+                    { spanish: "Cruza los brazos", english: "Cross your arms" },
+                    { spanish: "Aplaude tres veces", english: "Clap three times" },
+                    { spanish: "Da una palmada", english: "Clap once" },
+                    { spanish: "Saluda con la mano", english: "Wave" }
+                ]
+            },
+            {
+                title: "4. Touch & Point",
+                commands: [
+                    { spanish: "Toca la mesa", english: "Touch the table" },
+                    { spanish: "Toca la puerta", english: "Touch the door" },
+                    { spanish: "Toca tu cabeza", english: "Touch your head" },
+                    { spanish: "Toca tu hombro", english: "Touch your shoulder" },
+                    { spanish: "Señala el libro", english: "Point to the book" }
+                ]
+            },
+            {
+                title: "5. Classroom / Objects",
+                commands: [
+                    { spanish: "Abre la ventana", english: "Open the window" },
+                    { spanish: "Cierra la ventana", english: "Close the window" },
+                    { spanish: "Abre el libro", english: "Open the book" },
+                    { spanish: "Cierra el libro", english: "Close the book" },
+                    { spanish: "Abre tu mochila", english: "Open your bag" },
+                    { spanish: "Cierra tu mochila", english: "Close your bag" },
+                    { spanish: "Muestra tu lápiz", english: "Show your pencil" },
+                    { spanish: "Esconde tu lápiz", english: "Hide your pencil" }
+                ]
+            },
+            {
+                title: "6. Face & Senses",
+                commands: [
+                    { spanish: "Mira la pizarra", english: "Look at the board" },
+                    { spanish: "Mira al frente", english: "Look ahead" },
+                    { spanish: "Escucha atentamente", english: "Listen carefully" },
+                    { spanish: "Lee en voz alta", english: "Read aloud" },
+                    { spanish: "Parpadea", english: "Blink" },
+                    { spanish: "Respira profundo", english: "Take a deep breath" },
+                    { spanish: "Sonríe", english: "Smile" },
+                    { spanish: "Ríete", english: "Laugh" }
+                ]
+            },
+            {
+                title: "7. Numbers & Simple Actions",
+                commands: [
+                    { spanish: "Cuenta hasta cinco", english: "Count to five" },
+                    { spanish: "Levanta un pie", english: "Lift one foot" },
+                    { spanish: "Pisa fuerte", english: "Stamp your foot" }
+                ]
+            }
+        ];
+
+        let allCommands = [];
+        let currentIndex = 0;
+        let currentSectionTitle = '';
+        let answerVisible = false;
+
+        function renderList() {
+            const listView = document.getElementById('listView');
+            listView.innerHTML = sections.map((section, index) => `
+                <div class="section">
+                    <div class="section-header">
+                        <h2>${section.title}</h2>
+                        <button class="section-btn" onclick="startSectionPractice(${index})">Practice</button>
+                    </div>
+                    ${section.commands.map(cmd => `
+                        <div class="card">
+                            <div class="spanish">${cmd.spanish}</div>
+                            <div class="english">— ${cmd.english}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `).join('');
+        }
+
+        function startPractice() {
+            allCommands = sections.flatMap(s => s.commands).sort(() => Math.random() - 0.5);
+            currentIndex = 0;
+            currentSectionTitle = 'All Sections';
+            document.getElementById('listView').style.display = 'none';
+            document.getElementById('practiceMode').classList.add('active');
+            document.getElementById('practiceTitle').textContent = `Listen & Do! (${currentSectionTitle})`;
+            showCommand();
+        }
+
+        function startSectionPractice(sectionIndex) {
+            allCommands = [...sections[sectionIndex].commands].sort(() => Math.random() - 0.5);
+            currentIndex = 0;
+            currentSectionTitle = sections[sectionIndex].title;
+            document.getElementById('listView').style.display = 'none';
+            document.getElementById('practiceMode').classList.add('active');
+            document.getElementById('practiceTitle').textContent = `Listen & Do! (${currentSectionTitle})`;
+            showCommand();
+        }
+
+        function showCommand() {
+            const cmd = allCommands[currentIndex];
+            document.getElementById('commandDisplay').textContent = cmd.spanish;
+            
+            // Hide answer and reset button
+            const hintEl = document.getElementById('hint');
+            const btnEl = document.getElementById('viewAnswerBtn');
+            hintEl.classList.add('hidden');
+            hintEl.textContent = cmd.english;
+            btnEl.textContent = '👁️ View Answer';
+            answerVisible = false;
+        }
+
+        function toggleAnswer() {
+            const hintEl = document.getElementById('hint');
+            const btnEl = document.getElementById('viewAnswerBtn');
+            
+            if (answerVisible) {
+                hintEl.classList.add('hidden');
+                btnEl.textContent = '👁️ View Answer';
+            } else {
+                hintEl.classList.remove('hidden');
+                btnEl.textContent = '🙈 Hide Answer';
+            }
+            answerVisible = !answerVisible;
+        }
+
+        function nextCommand() {
+            currentIndex = (currentIndex + 1) % allCommands.length;
+            showCommand();
+        }
+
+        function speakCommand() {
+            const cmd = allCommands[currentIndex];
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(cmd.spanish);
+                utterance.lang = 'es-ES';
+                speechSynthesis.speak(utterance);
+            } else {
+                alert('Speech synthesis not supported in your browser');
+            }
+        }
+
+        function endPractice() {
+            document.getElementById('practiceMode').classList.remove('active');
+            document.getElementById('listView').style.display = 'grid';
+        }
+
+        renderList();
+    </script>
+</body>
+</html>
