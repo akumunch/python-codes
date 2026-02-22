@@ -16,7 +16,7 @@ select_english= WebDriverWait(driver,10).until(
 )
 select_english.click()
 accept_cookies= WebDriverWait(driver,10).until(
-    EC.element_to_be_clickable((By.CSS_SELECTOR, '.cc_btn.cc_btn_accept_all'))
+    EC.element_to_be_clickable((By.CSS_SELECTOR, '.cc_btn.cc_btn_ac3cept_all'))
 )
 accept_cookies.click()
 
