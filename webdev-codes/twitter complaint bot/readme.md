@@ -1,0 +1,1 @@
+The plan was to get my ISP's promised download and upload speeds, check it with the actual speed i'm getting, and tweet my complaint, but it turns out the speed im getting is actually aligning with the promised speed, so i had to increase the promised speed by a lot just for the program to work :)
