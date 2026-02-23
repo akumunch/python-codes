@@ -1,0 +1,26 @@
+2026/02/23-15:05:02.927 820c Reusing MANIFEST C:\Users\USER\Desktop\python-codes\webdev-codes\twitter complaint bot\chrome_profile\Default\IndexedDB\https_www.speedtest.net_0.indexeddb.leveldb/MANIFEST-000001
+2026/02/23-15:05:02.927 820c Recovering log #85
+2026/02/23-15:05:02.927 820c Reusing old log C:\Users\USER\Desktop\python-codes\webdev-codes\twitter complaint bot\chrome_profile\Default\IndexedDB\https_www.speedtest.net_0.indexeddb.leveldb/000085.log 
+2026/02/23-15:05:02.928 820c Delete type=2 #84
+2026/02/23-15:05:02.993 657c Level-0 table #90: started
+2026/02/23-15:05:02.998 657c Level-0 table #90: 3984 bytes OK
+2026/02/23-15:05:03.001 657c Delete type=0 #85
+2026/02/23-15:05:03.003 657c Manual compaction at level-0 from '\x00*\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00+\x00\x00\x00' @ 0 : 0; will stop at '\x00*\x00\x00\x05' @ 7218 : 1
+2026/02/23-15:05:03.004 657c Compacting 1@0 + 1@1 files
+2026/02/23-15:05:03.007 657c Generated table #91@0: 415 keys, 8228 bytes
+2026/02/23-15:05:03.007 657c Compacted 1@0 + 1@1 files => 8228 bytes
+2026/02/23-15:05:03.008 657c compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/02/23-15:05:03.009 657c Delete type=2 #90
+2026/02/23-15:05:03.009 548c Manual compaction at level-0 from '\x00*\x00\x00\x05' @ 7218 : 1 .. '\x00+\x00\x00\x00' @ 0 : 0; will stop at (end)
+2026/02/23-15:05:03.063 657c Level-0 table #93: started
+2026/02/23-15:05:03.065 657c Level-0 table #93: 6707 bytes OK
+2026/02/23-15:05:03.067 657c Delete type=2 #87
+2026/02/23-15:05:03.067 657c Delete type=0 #89
+2026/02/23-15:05:03.069 820c Manual compaction at level-0 from '\x00+\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00,\x00\x00\x00' @ 0 : 0; will stop at '\x00,\x00\x00\xc8\x18\x00u\x00s\x00e\x00r\x00_\x00U\x00n\x00i\x00v\x00S\x00p\x00e\x00e\x00d\x00T\x00e\x00s\x00t\x00R\x00e\x00s\x00u\x00l\x00t' @ 7389 : 1
+2026/02/23-15:05:03.070 820c Compacting 1@0 + 1@1 files
+2026/02/23-15:05:03.073 820c Generated table #94@0: 492 keys, 9311 bytes
+2026/02/23-15:05:03.073 820c Compacted 1@0 + 1@1 files => 9311 bytes
+2026/02/23-15:05:03.074 820c compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/02/23-15:05:03.074 820c Delete type=2 #93
+2026/02/23-15:05:03.074 820c Manual compaction at level-0 from '\x00,\x00\x00\xc8\x18\x00u\x00s\x00e\x00r\x00_\x00U\x00n\x00i\x00v\x00S\x00p\x00e\x00e\x00d\x00T\x00e\x00s\x00t\x00R\x00e\x00s\x00u\x00l\x00t' @ 7389 : 1 .. '\x00,\x00\x00\x00' @ 0 : 0; will stop at (end)
+2026/02/23-15:05:03.274 afa0 Manual compaction at level-0 from '\x00,\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00-\x00\x00\x00' @ 0 : 0; will stop at (end)
